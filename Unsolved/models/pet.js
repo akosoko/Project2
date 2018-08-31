@@ -5,16 +5,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     age: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     type: {
       type: DataTypes.STRING,
-      allowNull: false,
-      len: [1]
-    },
-    log: {
-      type: DataTypes.TEXT,
       allowNull: false,
     },
   });
@@ -24,10 +19,18 @@ module.exports = function(sequelize, DataTypes) {
     // A Pet can't be created without an Owner due to the foreign key constraint
     Pet.belongsTo(models.Owner, {
       foreignKey: {
-        allowNull: false
+        allowNull: false,
+      },
+    });
+    // Associating a Pet with an Entry
+    // We're saying that a Pet can have many Entries / logs.
+    Pet.hasMany(models.Entry, {
+      foreignKey: {
+        allowNull: false,
+        onDelete: "cascade"
       }
     });
   };
 
-  return Post;
+  return Pet;
 };
