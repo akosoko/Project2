@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   Owner.associate = function(models) {
     // Associating Owner with Pets
     // When an Owner is deleted, also delete any associated Pets
-    Owner.hasMany(models.Post, {
+    Owner.hasMany(models.Pet, {
       onDelete: "cascade"
     });
   };

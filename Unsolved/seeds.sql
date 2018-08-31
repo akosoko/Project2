@@ -1,6 +1,6 @@
 USE test;
 
--- insert database / APPEND tablename
+-- insert database / tablename
 -- INSERT INTO test 
 -- INSERT INTO test
 -- INSERT INTO test
